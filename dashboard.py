@@ -47,55 +47,10 @@ st.title("E-commerce Data Analysis Dashboard")
 
 # Exploratory Data Analysis Section
 
-## Section 1: Category Analysis
-st.header("Category Analysis")
-
-# Visualization 1: Category Terlaris dan Sedikit Peminat
-fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(12, 4))
-
-# Visual 1.1: Category Terlaris
-df_category_terlaris = df_order_items.groupby("product_category_name_english")["product_id"].count().sort_values(ascending=False).head(5)
-ax[0].barh(df_category_terlaris.index, df_category_terlaris, color="#102cd4")
-ax[0].set_title("Category Terlaris")
-ax[0].set_xlabel("Jumlah Pembelian")
-
-# Visual 1.2: Category Sedikit Peminat
-df_category_sedikit_peminat = df_order_items.groupby("product_category_name_english")["product_id"].count().sort_values().head(5)
-ax[1].barh(df_category_sedikit_peminat.index, df_category_sedikit_peminat, color="#D3D3D3")
-ax[1].set_title("Category Sedikit Peminat")
-ax[1].set_xlabel("Jumlah Pembelian")
-
-st.pyplot(fig)
-
-## Section 2: Delivery Time Analysis
-st.header("Delivery Time Analysis")
-
-# Visualization 2: Pengiriman antar Kota
-st.subheader("Pengiriman antar Kota")
-df_pengiriman_city = cust_seller.groupby(['seller_city', 'customer_city'])['lama_pengiriman_hari'].mean().sort_values(ascending=False).reset_index()
-
-fig, ax = plt.subplots(figsize=(10, 6))
-sns.boxplot(x=df_pengiriman_city['lama_pengiriman_hari'], ax=ax)
-ax.set_title("Boxplot Lama Pengiriman antar Kota")
-ax.set_xlabel("Lama Pengiriman (Hari)")
-
-st.pyplot(fig)
-
-# Visualization 3: Pengiriman antar State
-st.subheader("Pengiriman antar State")
-df_pengiriman_state = cust_seller.groupby(['seller_state', 'customer_state'])['lama_pengiriman_hari'].mean().sort_values(ascending=False).reset_index()
-
-fig, ax = plt.subplots(figsize=(10, 6))
-sns.boxplot(x=df_pengiriman_state['lama_pengiriman_hari'], ax=ax)
-ax.set_title("Boxplot Lama Pengiriman antar State")
-ax.set_xlabel("Lama Pengiriman (Hari)")
-
-st.pyplot(fig)
-
-## Section 3: Payment Analysis
+## Section 1: Payment Analysis
 st.header("Payment Analysis")
 
-# Visualization 4: Persebaran Pembelian berdasarkan Bagian Hari
+# Visualization 1.2: Persebaran Pembelian berdasarkan Bagian Hari
 st.subheader("Persebaran Pembelian berdasarkan Bagian Hari")
 df_bagian_hari = orders.groupby(by="waktu_hari_pembelian")["order_id"].nunique().reset_index()
 df_bagian_hari.rename(columns={"order_id": "total_orders"}, inplace=True)
@@ -108,8 +63,54 @@ ax.set_xlabel(None)
 ax.tick_params(axis='x', labelsize=12)
 
 st.pyplot(fig)
+## Section 1: Category Analysis
+st.header("Category Analysis")
 
-# Visualization 5: Payment Type Distribution
+# Visualization 2: Category Terlaris dan Sedikit Peminat
+fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(12, 4))
+
+# Visual 2.1: Category Terlaris
+df_category_terlaris = df_order_items.groupby("product_category_name_english")["product_id"].count().sort_values(ascending=False).head(5)
+ax[0].barh(df_category_terlaris.index, df_category_terlaris, color="#102cd4")
+ax[0].set_title("Category Terlaris")
+ax[0].set_xlabel("Jumlah Pembelian")
+
+# Visual 2.2: Category Sedikit Peminat
+df_category_sedikit_peminat = df_order_items.groupby("product_category_name_english")["product_id"].count().sort_values().head(5)
+ax[1].barh(df_category_sedikit_peminat.index, df_category_sedikit_peminat, color="#D3D3D3")
+ax[1].set_title("Category Sedikit Peminat")
+ax[1].set_xlabel("Jumlah Pembelian")
+
+st.pyplot(fig)
+
+## Section 3: Delivery Time Analysis
+st.header("Delivery Time Analysis")
+
+# Visualization 4: Pengiriman antar Kota
+st.subheader("Pengiriman antar Kota")
+df_pengiriman_city = cust_seller.groupby(['seller_city', 'customer_city'])['lama_pengiriman_hari'].mean().sort_values(ascending=False).reset_index()
+
+fig, ax = plt.subplots(figsize=(10, 6))
+sns.boxplot(x=df_pengiriman_city['lama_pengiriman_hari'], ax=ax)
+ax.set_title("Boxplot Lama Pengiriman antar Kota")
+ax.set_xlabel("Lama Pengiriman (Hari)")
+
+st.pyplot(fig)
+
+# Visualization 5: Pengiriman antar State
+st.subheader("Pengiriman antar State")
+df_pengiriman_state = cust_seller.groupby(['seller_state', 'customer_state'])['lama_pengiriman_hari'].mean().sort_values(ascending=False).reset_index()
+
+fig, ax = plt.subplots(figsize=(10, 6))
+sns.boxplot(x=df_pengiriman_state['lama_pengiriman_hari'], ax=ax)
+ax.set_title("Boxplot Lama Pengiriman antar State")
+ax.set_xlabel("Lama Pengiriman (Hari)")
+
+st.pyplot(fig)
+
+
+
+# Visualization 6: Payment Type Distribution
 st.subheader("Payment Type Distribution")
 df_payment = orders.groupby(by="payment_type")["order_id"].nunique().reset_index()
 
