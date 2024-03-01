@@ -178,13 +178,22 @@ st.pyplot(plt)
 # Conclusion Section
 st.header("Conclusion")
 st.markdown("""
-1. **Berapa rata-rata payment value dari tiap tipe transaksi? dan transaksi tipe apa yang paling sering digunakan?**
-    - 75% konsumen menggunakan tipe transaksi creditkan dengan rata-rata payment value sebesar 163.022616.
+1. **Category barang yang paling banyak dibeli dan paling sedikit diminati?**
+    - Category yang paling diminati adalah bed_bath_table sebaliknya security dan service adalah kategori yang paling sedikit dibeli.
 
-2. **Bagian hari apa yang sering digunakan oleh pembeli untuk melakukan transaksi?**
+2. **Berapa lama rata-rata pengiriman paket pengiriman paket terlama ? dari mana ke mana?**
+    - setelah dilakukan pembersihan outlier, pengiriman terlama antarkota adalah 24.3 hari yaitu dari kota sao jose dos campos ke kota belem. Untuk pengiriman antarstate yang paling lama dikirimkan adalah 27.69 hari yaitu dari state SP ke state RR.
+
+3. **Bagian hari apa yang sering digunakan oleh pembeli untuk melakukan transaksi?**
     - Hari senin adalah hari yang paling banyak digunakan oleh konsumen untuk belanja dan waktu paling aktif untuk berbelanja ada di siang hari.
 
-3. **Bulan apa yang terjadi peningkatan penjualan tertinggi?**
+4. **Berapa rata-rata payment value dari tiap tipe transaksi? dan transaksi tipe apa yang paling sering digunakan?**
+    - 75% konsumen menggunakan tipe transaksi creditkan dengan rata-rata payment value sebesar 163.022616.
+
+5. **Bagaimana perbandingan penjualan tahun 2017 dan 2018?**
+    - pada tahun 2018, terjadi peningkatan pembelian secara signifikan dibandingkan tahun 2017 yaitu meningkat sebanyak 140.87%.
+
+6. **Bulan apa yang terjadi peningkatan penjualan tertinggi?**
     - November 2017 adalah bulan dengan penjualan tertinggi, terutama di tanggal 24/11/2017.
 """)
 
